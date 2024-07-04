@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inventory</h1>
+        <div id="inventory-table"></div>
+    </div>
+
+    <script>
+        // JSON 데이터
+        const inventoryData = [
+            {"Item": "사과", "Quantity": 150, "Location": "서울 창고", "Expiry Date": "2024-07-30"},
+            {"Item": "바나나", "Quantity": 300, "Location": "부산 창고", "Expiry Date": "2024-08-10"},
+            {"Item": "포도", "Quantity": 200, "Location": "인천 창고", "Expiry Date": "2024-09-15"}
+        ];
+
+        // 데이터를 HTML 테이블로 변환
+        let table = '<table class="table table-striped"><thead><tr>';
+        for (let key in inventoryData[0]) {
+            table += `<th>${key}</th>`;
+        }
+        table += '</tr></thead><tbody>';
+        inventoryData.forEach(item => {
+            table += '<tr>';
+            for (let key in item) {
+                table += `<td>${item[key]}</td>`;
+            }
+            table += '</tr>';
+        });
+        table += '</tbody></table>';
+
+        // 테이블을 페이지에 추가
+        document.getElementById('inventory-table').innerHTML = table;
+    </script>
+</body>
+</html>
